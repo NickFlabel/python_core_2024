@@ -100,6 +100,11 @@ str6 = f"Имя: {name}, возраст: {age}"
 words = ["first_word", "second_word", "third_word"]
 sentence = " ".join(words)
 
+# split(x: str) - разделяет строку используя в качестве
+# разделителя x
+my_str = "first,second,third"
+my_list = my_str.split(",") # ["first", "second", "third"]
+
 # Индексация в строках
 my_str = "my string"
 my_str[1] # "y"
