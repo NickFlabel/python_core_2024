@@ -82,7 +82,7 @@ def process_data(data):
 
 def make_multiplier(factor):
     def multiplier(x):
-        return x ** factor
+        return x ** factor # 2
     return multiplier # Возврат функции как переменной
 
 to_power_two = make_multiplier(2) # to_power - функция
