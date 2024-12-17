@@ -134,4 +134,4 @@ try:
 except ValueError as e: # as == (=) или e = ValueError()
     print(e)
     print("Неверное значение")
-@FlaviusBelisarius
+

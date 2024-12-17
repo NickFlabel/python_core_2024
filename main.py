@@ -1,16 +1,11 @@
-# user_input = input("Введите слова через пробел")
-# my_list = user_input.split(" ")
-# print(my_list)
+lst = [1, 2]
 
-user_input = input("Введите строку:")
-number_of_digits = 0
-number_of_letters = 0
+try:
+    int("hello")
+    lst[10] == 1
+except (ZeroDivisionError, IndexError):
+    print("Код был с ошибкой")
+except ValueError:
+    print("Возникла ValueError")
 
-for elem in user_input:
-    if elem.isalpha(): # isalpha() - True если символ - буква
-        number_of_letters += 1
-    if elem.isdigit():
-        number_of_digits += 1
-
-print("Количество букв: ", number_of_letters)
-print("Количество цифр: ", number_of_digits)
+print("Код после деления на ноль")
