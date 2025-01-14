@@ -80,3 +80,32 @@ def add(a, b):
     return a + b
 
 print(add(1, 2))
+
+import time
+start = time.time()
+...
+end = time.time()
+print(end - start)
+
+# написать декоратор для подсчета времени выполнения
+# функции
+
+
+
+import time
+
+def time_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"Выполнение функции {func} заняло {end_time - start_time} секунд")
+        return result
+    return wrapper
+
+@time_decorator
+def addition(a, b):
+    time.sleep(1)
+    return a + b
+
+addition(1, 2)
