@@ -127,7 +127,7 @@ class Fish(Animal):
         print("No sound")
 
 cat = Cat()
-print(cat.make_sound())
+print(cat.make_sound()) # фактически - make_sound(cat)
 bird = Bird()
 print(bird.make_sound())
 fish = Fish()
@@ -183,3 +183,41 @@ class LoginRequiredMixin:
 
 class MainPageController(Controller, LoginRequiredMixin):
     ...
+
+
+class A:
+    def my_method(self):
+        print("A")
+
+class B:
+    def my_method(self):
+        print("B")
+
+class C(A, B):
+    ...
+
+c = C()
+c.my_method()
+
+
+class TransportVehicle:
+    _vehicle_type = "Неопределенное транспортное средство"
+
+    def __init__(self, make, speed):
+        self.make = make
+        self.speed = speed
+
+    def description(self):
+        print(f"{self._vehicle_type} Марка: {self.make} - скорость: {self.speed}")
+
+class Car(TransportVehicle):
+    _vehicle_type = "Автомобиль"
+
+class Bicycle(TransportVehicle):
+    _vehicle_type = "Велосипед"
+
+bicycle = Bicycle("марка", 15)
+car = Car("volvo", 100)
+
+car.description()
+bicycle.description()
