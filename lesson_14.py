@@ -205,3 +205,16 @@ game.start()
 # cell1 = Cell("A")
 # cell2 = Cell("A")
 # print(cell1 == cell2) # False
+#@FlaviusBelisarius
+# github.com/NickFlabel/python_core_2024
+
+...
+# 1, 1
+class A: ...
+class B: ...
+import random
+list_of_classes = [A, B]
+grid = []
+for i in range(3):
+    grid.append(random.choice(list_of_classes))
+print(grid)

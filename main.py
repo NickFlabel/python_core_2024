@@ -1,11 +1,23 @@
-lst = [1, 2]
+class A: ...
+class B: ...
+import random
+list_of_classes = [A, B]
+grid = []
+for i in range(3):
+    random_choice = random.choice(list_of_classes)
+    initialized_obj = random_choice()
+    grid.append(initialized_obj)
+print(grid)
+# Тимофей Хирьянов
 
-try:
-    int("hello")
-    lst[10] == 1
-except (ZeroDivisionError, IndexError):
-    print("Код был с ошибкой")
-except ValueError:
-    print("Возникла ValueError")
+class GameObject:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
-print("Код после деления на ноль")
+    def interact(self):
+        ...
+
+class Item(GameObject):
+    def interact(self):
+        print("Вы подобрали предмет!")
