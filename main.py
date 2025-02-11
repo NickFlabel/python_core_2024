@@ -1,6 +1,9 @@
 class A: ...
 class B: ...
+
 import random
+from random import randint
+
 list_of_classes = [A, B]
 grid = []
 for i in range(3):
