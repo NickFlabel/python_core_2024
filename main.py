@@ -24,3 +24,13 @@ class GameObject:
 class Item(GameObject):
     def interact(self):
         print("Вы подобрали предмет!")
+
+
+dict_eng_to_rus = {
+    "world": "мир"
+}
+dict_eng_to_rus["world"] # мир
+
+dict_rus_to_eng = {} # "мир": "world"
+for key, value in dict_eng_to_rus.items():
+    dict_rus_to_eng[key] = value
