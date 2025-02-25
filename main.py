@@ -1,36 +1,33 @@
-class A: ...
-class B: ...
-
-import random
-from random import randint
-
-list_of_classes = [A, B]
-grid = []
-for i in range(3):
-    random_choice = random.choice(list_of_classes)
-    initialized_obj = random_choice()
-    grid.append(initialized_obj)
-print(grid)
-# Тимофей Хирьянов
-
-class GameObject:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-    def interact(self):
-        ...
-
-class Item(GameObject):
-    def interact(self):
-        print("Вы подобрали предмет!")
+def decorator(func):
+    def wrapper(a):
+        result = func(a)
+        return result + 3
+    return wrapper
 
 
-dict_eng_to_rus = {
-    "world": "мир"
-}
-dict_eng_to_rus["world"] # мир
+@decorator
+def my_func(a):
+    return a * 2
 
-dict_rus_to_eng = {} # "мир": "world"
-for key, value in dict_eng_to_rus.items():
-    dict_rus_to_eng[key] = value
+print(my_func(2))
+
+
+class OriginalClass:
+    def __call__(self, a):
+        return a * 2
+
+class DecoratorClass:
+    def __init__(self, wrapee):
+        self.wrapee = wrapee
+
+    def __call__(self, a):
+        result = self.wrapee(a)
+        return result + 3
+
+
+original_class = OriginalClass()
+decorated_class = DecoratorClass(original_class)
+print(decorated_class(2))
+
+
+
