@@ -3,5 +3,15 @@
         "name": "name",
         "position": "pos",
         "salary": 100.0
+    },
+    {
+        "name": "new_name",
+        "position": "new_pos",
+        "salary": 200.0
+    },
+    {
+        "name": "another_name",
+        "position": "another_pos",
+        "salary": 300.0
     }
 ]

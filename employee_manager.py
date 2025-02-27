@@ -88,6 +88,9 @@ def add_employee():
     employees.append(new_employee)
     save_data(employees)
 
+    # Обновление списка работников
+    update_listbox()
+
     # Удаляем уже ненужные введенные данные
     name_entry.delete(0, tk.END)
     position_entry.delete(0, tk.END)
@@ -99,6 +102,23 @@ tk.Button(
     command=add_employee
 ).grid(row=3, columnspan=2, pady=5) # columnspan - сколько колонок занимает
 # элемент
+
+listbox = tk.Listbox(root, width=50)
+listbox.pack()
+
+def update_listbox():
+    # Загружаем список работников из БД
+    employees = load_data()
+    # Очищаем текущий список работников
+    listbox.delete(0, tk.END)
+    # Заполняем список
+    for emp in employees:
+        listbox.insert(
+            tk.END,
+            f"{emp['name']} - {emp['position']} - {emp['salary']}"
+        )
+
+update_listbox()
 
 root.mainloop()
 
