@@ -120,5 +120,79 @@ def update_listbox():
 
 update_listbox()
 
+def delete_employee():
+    # Выбрать сотрудника на которого кликнул пользователь
+    selected = listbox.curselection()
+    # Метод cursorselection() возвращает два значения:
+    # снача индекс выбранного значения
+    # вторым значением - данные
+    if not selected:
+        messagebox.showerror("Ошибка", "Выберите сотрудника для удаления")
+    employees = load_data()
+    index = selected[0]
+    del employees[index]
+    save_data(employees)
+    update_listbox()
+
+tk.Button(
+    root,
+    text="Удалить",
+    command=delete_employee
+).pack(pady=5)
+
+
+def select_employee(event): # Аргумент нужен так как tkinter при наступлении
+    # события прокидывает в функцию метаданные о нем
+    selected = listbox.curselection()
+    if not selected:
+        return
+    employees = load_data()
+    index = selected[0]
+    emp = employees[index]
+
+    name_entry.delete(0, tk.END)
+    name_entry.insert(0, emp["name"])
+
+    position_entry.delete(0, tk.END)
+    position_entry.insert(0, emp["position"])
+
+    salary_entry.delete(0, tk.END)
+    salary_entry.insert(0, emp["salary"])
+
+# Привязка функции select_employee к клику на работника из списка
+listbox.bind("<<ListboxSelect>>", select_employee)
+
+def update_employee():
+    selected = listbox.curselection()
+    if not selected:
+        messagebox.showerror("Ошибка", "Выберите сотрудника для обновления")
+        return
+
+    name = name_entry.get()
+    position = position_entry.get()
+    salary = salary_entry.get()
+
+    if not name or not position or not salary:
+        messagebox.showerror("Ошибка", "Заполните все поля")
+        return
+
+    try:
+        salary = float(salary)
+    except ValueError:
+        messagebox.showerror("Ошибка", "Зарплата должна быть числом")
+        return
+
+    employees = load_data()
+    index = selected[0]
+    employees[index] = {"name": name, "position": position, "salary": salary}
+    save_data(employees)
+    update_listbox()
+
+tk.Button(
+    frame,
+    text="Обновить",
+    command=update_employee
+).grid(row=4, columnspan=2, pady=5)
+
 root.mainloop()
 
