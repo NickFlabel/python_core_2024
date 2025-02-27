@@ -1,8 +1,7 @@
 [
     {
-        "name": "daw"
-    },
-    {
-        "name": "2342"
+        "name": "name",
+        "position": "pos",
+        "salary": 100.0
     }
 ]
