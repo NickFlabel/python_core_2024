@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>Это главная страница нашего приложения</p>
+    {% for emp in employees %}
+    <p>Имя: {{ emp.name }}</p> <!-- Аналогично emp["name"] в python -->
+    <p>Должность: {{ emp.position }}</p>
+    <p>Зарплата: {{ emp.salary }}</p>
+    {% endfor %}
+
+    <h2>Добавить сотрудника</h2>
+    <form action="/add" method="post">
+        <input type="text" name="name" required>
+        <input type="tel" name="position" required>
+        <input type="number" name="salary" required>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>

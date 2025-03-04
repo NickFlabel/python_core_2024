@@ -3,8 +3,9 @@ class EmployeeController:
         self.model = model
         self.view = view
 
-    def add_employee(self):
-        name, position, salary = self.view.get_employee_data()
+    def add_employee(self, name=None, position=None, salary=None):
+        if not name or not position or not salary:
+            name, position, salary = self.view.get_employee_data()
 
         if not name or not position or not salary:
             self.view.show_error("Заполните все поля!")
